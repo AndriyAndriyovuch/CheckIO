@@ -19,7 +19,8 @@ def sum_by_types(items: list) -> Tuple[str, int]:
     res_int = 0
     for i in int_list:
         res_int += i
-    return (res_str, res_int)
+
+    return res_str, res_int
 
 
 if __name__ == "__main__":
