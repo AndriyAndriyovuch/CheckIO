@@ -10,13 +10,17 @@ def sort_by_ext(files: List[str]) -> List[str]:
         files_data.append(res_2)
     a = []
     for j in files_data:
+        if j[0] == '.':
+            j = '*' + j[0:]
         j = j.split('.')
         a.append(j)
 
-    s = sorted(a, key=lambda x: (x[0], x[1]))
+    s = sorted(a, key=lambda x: (x[1], x[0]))
     final = []
 
     for k in s:
+        if k[0] == '*':
+            k[0] = ''
         k = '.'.join(k)
         final.append(k)
 
@@ -25,7 +29,7 @@ def sort_by_ext(files: List[str]) -> List[str]:
 
 if __name__ == '__main__':
     print("Example:")
-    print(sort_by_ext(['1.cad', '1.bat', '1.aa', '2.bat']))
+    print(sort_by_ext(['1.cad', '1.bat', '1.aa', '.bat']))
 
     # These "asserts" are used for self-checking and not for an auto-testing
     assert sort_by_ext(['1.cad', '1.bat', '1.aa']) == ['1.aa', '1.bat', '1.cad']
